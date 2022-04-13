@@ -1,5 +1,14 @@
 import smbus
 import time
+import os
+
+try: 
+	f = open('/home/cerrejon/Documents/proyect/temperature/data.csv', 'a+')
+	if os.stat('/home/cerrejon/Documents/proyect/temperature/data.csv').st_size == 0:
+            f.write('Date,Time,Temperature,Humidity\r\n')
+except:
+	pass
+
 
 while True:
 	bus = smbus.SMBus(1)
@@ -21,4 +30,6 @@ while True:
 	# Output data to screen
 	print("Temperature: ", cTemp, "°C")
 	print("Humidity   : ", humidity,"%HR")
+	f.write('{0},{1},{2}°C,{3}%HR\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M'), cTemp, humidity))
+#	f.write(Date,Time,cTemp,humidity)
 	time.sleep(1)
