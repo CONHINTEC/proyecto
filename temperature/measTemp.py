@@ -15,7 +15,7 @@ while True:
 	humidity = round((100 * (data[3] * 256 + data[4]) / 65535.0),2)
 	 
 	# Output data to screen
-	print('{0},{1},{2}°C,{3}%HR\r\n'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M:%S'), cTemp, humidity))
+	print('{0}, {1}, {2}°C, {3}%HR\r'.format(time.strftime('%m/%d/%y'), time.strftime('%H:%M:%S'), cTemp, humidity))
 #	print("Temperature: ", cTemp, "°C")#
 #	print("Humidity   : ", humidity,"%HR")
 	time.sleep(1)
